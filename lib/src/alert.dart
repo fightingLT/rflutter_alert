@@ -77,20 +77,25 @@ class Alert {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _getCloseButton(),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    20, (style.isCloseButton ? 0 : 20), 20, 0),
+                    20, 0, 20, 0),
                 child: Column(
                   children: <Widget>[
                     _getImage(),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      title,
-                      style: style.titleStyle,
-                      textAlign: TextAlign.center,
+                    Row(
+                      mainAxisAlignment: style.isCloseButton ? MainAxisAlignment.start : MainAxisAlignment.center,
+                      children: <Widget>[
+                        _getCloseButton(),
+                        Text(
+                          title,
+                          style: style.titleStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: desc == null ? 5 : 10,
@@ -113,7 +118,7 @@ class Alert {
       contentPadding: style.buttonAreaPadding,
       content: Container(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: _getButtons(),
         ),
       ),
@@ -134,9 +139,9 @@ class Alert {
   Widget _getCloseButton() {
     return style.isCloseButton
         ? Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 85, 0),
             child: Container(
-              alignment: FractionalOffset.topRight,
+              alignment: FractionalOffset.topLeft,
               child: Container(
                 width: 20,
                 height: 20,
