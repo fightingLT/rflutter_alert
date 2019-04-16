@@ -86,14 +86,15 @@ class Alert {
                     SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      mainAxisAlignment: style.isCloseButton ? MainAxisAlignment.start : MainAxisAlignment.center,
+                    Stack(
                       children: <Widget>[
                         _getCloseButton(),
-                        Text(
-                          title,
-                          style: style.titleStyle,
-                          textAlign: TextAlign.center,
+                        Center(
+                          child: Text(
+                            title,
+                            style: style.titleStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ],
                     ),
@@ -139,7 +140,7 @@ class Alert {
   Widget _getCloseButton() {
     return style.isCloseButton
         ? Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 85, 0),
+            padding: const EdgeInsets.fromLTRB(0, 4, 0, 0),
             child: Container(
               alignment: FractionalOffset.topLeft,
               child: Container(
